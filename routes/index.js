@@ -6,24 +6,24 @@ var Mongo = db.model('entries');
 router.get('/', function (req, res, next) {
   console.dir(req);
 
- db.model('entries').find(function (err, posts) {
-     console.log(posts)
+  db.model('entries').find(function (err, posts) {
+    console.log(posts)
     res.render('index', { posts: posts });
   });
 });
 
 router.post('/', function (req, res, next) {
   console.dir(req);
-var post = new Mongo({
-  topic: req.body.topic,
-  entry: req.body.entry
-})
+  var post = new Mongo({
+    topic: req.body.topic,
+    entry: req.body.entry
+  })
   post.save(function (err, saved_post) {
-    if(err) console.log(err);
-    else  {
-       db.model('entries').find(function (err, posts) {
-    res.render('index', { posts: posts });
-  });
+    if (err) console.log(err);
+    else {
+      db.model('entries').find(function (err, posts) {
+        res.render('index', { posts: posts });
+      });
     }
   });
 });

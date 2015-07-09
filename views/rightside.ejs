@@ -12,7 +12,10 @@
         <p>
           <%=posts[i].entry %>
         </p>
-        <a href="/users/<%=posts[i]._id %>" class="secondary-content"><i class="material-icons">open_in_new</i></a>
+        <a href="/users/<%=posts[i]._id %>" style="float:right" class="">
+        <i class="material-icons">open_in_new</i></a>
+        <a href="/users/delete/<%=posts[i]._id %>"  style="float:right" class="">
+        <i class="material-icons">delete</i></a>
       </li>
       <% } %>
   </ul>

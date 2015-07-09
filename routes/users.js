@@ -15,5 +15,15 @@ router.get('/:id', function (req, res, next) {
     res.render('users', { posts: posts });
   })
 });
-
+router.get('/delete/:id', function(req,res,next){
+  var id = req.params.id;
+  mongo.remove({_id:id}, function(err,success){
+    if(success){
+      console.log("deleted successfully");
+       mongo.find( function (err, posts) {
+    res.render('index', { posts: posts });
+  })
+    }
+  })
+})
 module.exports = router;
