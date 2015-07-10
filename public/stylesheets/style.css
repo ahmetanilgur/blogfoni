@@ -1,7 +1,7 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-a {
-  color: #00b7ff;
+p {
+  overflow: hidden;
+text-overflow: ellipsis;
+-o-text-overflow: ellipsis;
+white-space: nowrap;
+width: 100%;
 }
