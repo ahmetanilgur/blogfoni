@@ -1,0 +1,41 @@
+extends ./boilerplate.jade
+block solContent
+		div.col.s5
+			h5 Shoot-a-post!
+			br
+			form(method="POST" action="/")
+				div.input-field.col.s12
+					i.material-icons.prefix info_outline
+					input#icon_prefix(name="topic"  type="text" class="validate")
+					label(for="icon_prefix") Topic
+				div.input-field.col.s12
+					i.material-icons.prefix label_outline
+					textarea#textarea1.materialize-textarea(name="entry")
+					label(for="textarea1") Entry
+				button.btn.waves-effect.waves-light(type="submit" name="action") Submit 
+				br
+				br
+		block sagContent
+		div.col.s7
+			h5 Posts-shot:
+			br
+			ul.collection
+				each post in posts
+					div.modal(id="modal#{post._id}")
+						div.modal-content
+							h4 #{post.topic}
+							span #{post.entry}
+						div.modal-footer
+							a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") Close
+					li.collection-item.avatar
+						i.material-icons.circle.red comment
+						span.title
+							// a.(href="/mainPosts/#{post._id}" style="float:right")
+								i.material-icons open_in_new
+							a.modal-trigger(href="#modal#{post._id}" style="float:right")
+								i.material-icons open_in_new	
+							a(href="/delete/#{post._id}" style="float:right")
+								i.material-icons delete
+						b #{post.topic}
+						p #{post.entry}
+						p #{post.date}

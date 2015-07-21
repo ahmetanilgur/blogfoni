@@ -2,12 +2,15 @@ var express = require('express');
 var router = express.Router();
 var db = require("../db");
 var Mongo = db.model('entries');
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
   console.dir(req);
     Mongo.find(function (err, posts) {
     console.log(posts)
-    res.render('index', { posts: posts });
+    res.render('index', { 
+      posts:posts
+       });
   });
 });
 

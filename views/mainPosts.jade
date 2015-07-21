@@ -1,0 +1,17 @@
+extends ./boilerplate.jade
+block solContent
+	div.col.s12
+		h5 Posts
+		ul.collection
+			each post in posts
+				li.collection-item.avatar
+					i.material-icons.circle.red comment
+					span.title
+						a(href="/mainPosts/#{post._id}" style="float:right")
+							i.material-icons open_in_new
+						a(href="/delete/#{post._id}" style="float:right")
+							i.material-icons delete
+					b #{post.topic}
+					p #{post.entry}
+					p #{post.date}
+include footer
