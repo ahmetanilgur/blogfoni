@@ -11,10 +11,14 @@ body
 				.nav-wrapper
 					a.brand-logo.center(href="/") Blogfoni
 					ul#nav-mobile.right.hide-on-med-and-down
-						li
-							a(href="abc") Register
-						li
-							a(href="abc.html") Login
+						if !username
+							li
+								a.modal-trigger(href="#registerModal") Register
+							li
+									a.modal-trigger(href="#loginmodal") Login
+						else 
+							li
+									a(href="#") Hello, #{username}
 		div.row
 			block solContent
 			block sagContent

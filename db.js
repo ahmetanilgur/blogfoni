@@ -5,5 +5,10 @@ var entrySchema = new mongoose.Schema({
 	entry: String,
 	date: Date
 })
+var userSchema = new mongoose.Schema({
+	username: String,
+	password: String
+})
+mongoose.model('users', userSchema);
 mongoose.model('entries', entrySchema);
 module.exports = mongoose;
