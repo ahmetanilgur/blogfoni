@@ -36,9 +36,10 @@ block solContent
 								i.material-icons open_in_new	
 							a(href="/delete/#{post._id}" style="float:right")
 								i.material-icons delete
-						b #{post.topic}
+						b #{post.topic} 
 						p #{post.entry}
-						p #{post.date}
+							.sagFloat #{post.username}
+						p #{post.date} 
 		//register modalı
 		div.modal(id="registerModal")
 			div.modal-content

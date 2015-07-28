@@ -3,6 +3,7 @@ mongoose.connect('mongodb://localhost/blogfoni');
 var entrySchema = new mongoose.Schema({
 	topic: String,
 	entry: String,
+	username: String,
 	date: Date
 })
 var userSchema = new mongoose.Schema({
