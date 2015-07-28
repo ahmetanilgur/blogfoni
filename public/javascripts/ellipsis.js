@@ -3,14 +3,14 @@
 /**TODO : Move into a config file */
 var clientSideConfig = {
     elements : {
-        parapraph  : 'p'
+        paragraph  : 'p'
     },
     styles : {
         bold  : 'b'
     }
 }
 
-$(clientSideConfig.elements.parapraph).each(function () {
+$(clientSideConfig.elements.paragraph).each(function () {
     if ($(this).text().length>140) {
         $(this).text($(this).text().substr(0, 140) + "...");
     }
