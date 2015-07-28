@@ -10,7 +10,6 @@ var session = require('express-session');
 router.get('/', function (req, res, next) {
   console.dir(req);
   Mongo.find(function (err, posts) {
-    console.log(posts)
     res.render('index', {
       posts: posts,
       username: req.session.username
@@ -28,9 +27,10 @@ router.post('/', function (req, res, next) {
     entry: req.body.entry,
     username: req.session.username,
     date: Date.now()
-  })
+  });
 
   post.save(function (err, saved_post) {
+    console.log(post);
     if (err) console.log(err);
     else {
       Mongo.find(function (err, posts) {
