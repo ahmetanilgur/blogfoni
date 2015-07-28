@@ -22,13 +22,14 @@ router.post('/', function (req, res, next) {
   if (!req.session.username) {
     req.session.username = "Anonymous"
   }
+  req.body.entry=req.body.entry.replace(/\r\n/g,"<br>");
   var post = new Mongo({
     topic: req.body.topic,
     entry: req.body.entry,
     username: req.session.username,
     date: Date.now()
   });
-
+  
   post.save(function (err, saved_post) {
     console.log(post);
     if (err) console.log(err);

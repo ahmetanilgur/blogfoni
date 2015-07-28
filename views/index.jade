@@ -24,7 +24,7 @@ block solContent
 					div.modal(id="modal#{post._id}")
 						div.modal-content
 							h4 #{post.topic}
-							span #{post.entry}
+							span!= post.entry
 						div.modal-footer
 							a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") Close
 					li.collection-item.avatar
@@ -37,7 +37,7 @@ block solContent
 							a(href="/delete/#{post._id}" style="float:right")
 								i.material-icons delete
 						b #{post.topic} 
-						p #{post.entry}
+						p!= post.entry
 							.sagFloat #{post.username}
 						p #{post.date} 
 		//register modalı
