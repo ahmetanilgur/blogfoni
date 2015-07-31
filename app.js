@@ -11,16 +11,14 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var posts = require('./routes/posts');
 var deletePost = require('./routes/delete');
+var admin = require('./routes/admin');
 var app = express();
-// , engine=require('ejs-mate');
 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// use ejs-locals for all ejs templates:
-// app.engine('ejs', engine);
 
 
 // uncomment after placing your favicon in /public
@@ -35,8 +33,9 @@ app.use(session({secret:'adabazar1234567890'}));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/mainPosts', posts);
+app.use('/posts', posts);
 app.use('/delete', deletePost);
+app.use('/admin', admin);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

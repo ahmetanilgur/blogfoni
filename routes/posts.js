@@ -15,7 +15,7 @@ router.get('/', function (req, res, next) {
 router.get('/:id', function (req, res, next) {
   var id = req.params.id;
   mongo.find( {_id:id},function (err, posts) {
-    res.render('mainPosts', { posts: posts });
+    res.render('posts', { posts: posts });
   })
 });
 router.get('/delete/:id', function(req,res,next){
