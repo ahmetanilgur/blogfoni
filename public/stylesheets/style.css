@@ -1,9 +1,7 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  flex-direction: column;
 }
-a {
-  color: #00b7ff;
-}
-.sagFloat {
-  float: right;
+main {
+  flex: 1 0 auto;
 }

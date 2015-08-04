@@ -9,7 +9,8 @@ var entrySchema = new mongoose.Schema({
 var userSchema = new mongoose.Schema({
 	username: String,
 	password: String,
-	isBanned: Boolean
+	isBanned: Boolean,
+	isAdmin: Boolean
 })
 mongoose.model('users', userSchema);
 mongoose.model('entries', entrySchema);

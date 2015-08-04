@@ -5,14 +5,20 @@ var mongo = db.model('entries');
 /* GET home page. */
 router.get('/', function (req, res, next) {
   mongo.find( function (err, posts) {
-    res.render('users', { posts: posts });
+    res.render('error', { error: {
+      status: "You have entered a bad url.",
+      stack: "Please wander around safe places. No hackerish stuff."
+      },
+      message:"You are lost! I guess.."});
   })
 });
 
-router.get('/:id', function (req, res, next) {
-  var id = req.params.id;
-  mongo.find( {_id:id},function (err, posts) {
-    res.render('users', { posts: posts });
+router.get('/:username', function (req, res, next) {
+  var username = req.params.username;
+  mongo.find( {username:username},function (err, posts) {
+    res.render('users', {
+      username:username, 
+      posts: posts });
   })
 });
 router.get('/delete/:id', function(req,res,next){

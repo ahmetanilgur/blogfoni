@@ -10,15 +10,29 @@ router.get('/', function (req, res, next) {
   })
 });
 router.get('/:id', function (req, res, next) {
-  var id = req.params.id;
-  console.log(req.session.username);
-  Mongo.remove({ _id: id }, function (err, success) {
-    if (success) {
-      console.log("deleted successfully");
-      Mongo.find(function (err, posts) {
-        res.render('mainPosts', { posts: posts, username: req.session.username });
-      })
-    }
-  })
+   getUsernameFromPost();
+  function getUsernameFromPost() {
+    Mongo.findOne({ _id: req.params.id }, function (err, data) {
+      console.log(data.username);
+      if (data.username == req.session.username || req.session.isAdmin==true) {
+        Mongo.remove({ _id: req.params.id }, function (err, success) {
+          if (!err) {
+            Mongo.find(function (err, posts) {
+              res.redirect('../../');
+            })
+          }
+        })
+      }
+      else {
+        res.render('error', {
+          error: {
+            status: "You do not have the permission to delete posts of others.",
+            stack: "Access denied."
+          },
+          message: "Shit happens :("
+        })
+      }
+    })
+  }
 });
 module.exports = router;

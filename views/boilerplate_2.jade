@@ -1,6 +1,6 @@
 html
-	link(rel="stylesheet", href="../../../materialize-css/bin/materialize.css")
-	link(rel="stylesheet", href="../../../stylesheets/style.css")
+	link(rel="stylesheet", href="../../../../materialize-css/bin/materialize.css")
+	link(rel="stylesheet", href="../../../../stylesheets/style.css")
 	link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
 	script(type="text/javascript" src="../../../../../vendor/booklet-1.0.0.js")
 	script(src="../../../javascripts/app.js")
@@ -10,16 +10,17 @@ body
 		nav
 			div
 				.nav-wrapper
-					a.brand-logo.center(href="/") Blogfoni
+					a.brand-logo.large.material-Icons(href="/" style="font-size:4rem") business 
+					b &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  blogfoni
 					ul#nav-mobile.right.hide-on-med-and-down
 						if !username
 							li
-								a.modal-trigger(href="#registerModal") Register
-							li
-									a.modal-trigger(href="#loginmodal") Login
+								a.modal-trigger(href="../../") Home
 						else 
 							li
 									a(href="#") Hello, #{username}
+							li
+									a(href="../../logout") Logout
 		div.row
 			block leftContent
 			block rightContent

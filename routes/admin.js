@@ -6,15 +6,26 @@ var Users = db.model('users');
 var session = require('express-session');
 /* GET home page. */
 var refresh = function (req, res, next) {
-  Entries.find(function (err, posts) {
-    Users.find(function (error, users) {
-      res.render('admin', {
-        posts: posts,
-        users: users,
-        username: req.session.username
+  if (req.session.isAdmin) {
+    Entries.find(function (err, posts) {
+      Users.find(function (error, users) {
+        res.render('admin', {
+          posts: posts,
+          users: users,
+          username: req.session.username
+        });
       });
     });
-  });
+  }
+  else {
+          res.render('error', {
+          message: 'Permission denied',
+          error: {
+            status: "You no look like an adminos.",
+            stack: "Plz go awai."
+          }
+        })
+  }
 }
 router.get('/', refresh);
 

@@ -10,7 +10,8 @@ body
 		nav
 			div
 				.nav-wrapper
-					a.brand-logo.center(href="/") Blogfoni
+					a.brand-logo.large.material-Icons(href="/" style="font-size:4rem") business 
+					b &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  blogfoni
 					ul#nav-mobile.right.hide-on-med-and-down
 						if !username
 							li
@@ -20,6 +21,10 @@ body
 						else 
 							li
 									a(href="#") Hello, #{username}
+										if isAdmin
+											admin
+							li
+									a(href="../../logout") Logout									
 		div.row
 			block leftContent
 			block rightContent
