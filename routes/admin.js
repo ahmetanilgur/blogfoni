@@ -4,7 +4,7 @@ var db = require("../config/db");
 var Entries = db.model('entries');
 var Users = db.model('users');
 var session = require('express-session');
-var language=require('../config/language.js')
+var language=require('../language.js')
 /* GET home page. */
 var refresh = function (req, res, next) {
   if (req.session.isAdmin) {

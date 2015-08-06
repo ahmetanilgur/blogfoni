@@ -4,12 +4,12 @@ var db = require("../config/db");
 var Entries = db.model('entries');
 var User = db.model('users');
 var session = require('express-session');
-var language=require('../config/language.js');
-var languageCases=require('../config/languageCases.js');
+var language=require('../language.js');
+var languageCasesIndex=require('../config/languageCasesIndex.js');
 /* GET home page. */
 
 
-router.get('/', languageCases);
+router.get('/', languageCasesIndex);
 
 router.post('/', function (req, res, next) {
   console.dir(req);

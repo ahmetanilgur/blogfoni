@@ -29,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express(path.join(__dirname, 'config')));
 app.use(session({secret:'adabazar1234567890'}));
 
 app.use('/', routes);

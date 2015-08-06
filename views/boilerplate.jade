@@ -4,7 +4,6 @@ html
 	link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
 	script(type="text/javascript" src="../../../../../vendor/booklet-1.0.0.js")
 	script(src="../../../javascripts/app.js")
-	script(src="../../../javascripts/language.js")
 	script(src="../../../javascripts/views/index.js")
 	meta(charset="UTF-8")
 body
@@ -25,7 +24,7 @@ body
 										if isAdmin
 											admin
 							li
-									a(href="../../logout") Logout								
+									a(href="../../logout") #{language.logout}								
 		div.row
 			block leftContent
 			block rightContent

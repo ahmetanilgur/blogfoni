@@ -1,11 +1,9 @@
 var session = require('express-session');
-var language=require('../config/language.js');
+var language = require('../language');
 var db = require("../config/db");
 var Entries = db.model('entries');
-var express = require('express');
-var language=require('../config/language.js')
 
- module.exports=function (req, res, next) {
+module.exports = function (req, res, next) {
   Entries.find(function (err, posts) {
     if (req.session.language) {
       if (req.session.language == "tr") {
@@ -31,11 +29,11 @@ var language=require('../config/language.js')
       }
     }
     else {
-          res.render('index', {
-          posts: posts,
-          username: req.session.username,
-          language: language.en
-        });
+      res.render('index', {
+        posts: posts,
+        username: req.session.username,
+        language: language.en
+      });
     }
 
 

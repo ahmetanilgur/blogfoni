@@ -15,12 +15,12 @@ body
 					ul#nav-mobile.right.hide-on-med-and-down
 						if !username
 							li
-								a.modal-trigger(href="../../") Back
+								a(href='../../') #{language.back}
 						else 
 							li
-									a(href="#") Hello, #{username}
+								a(href="#") Hello, #{username}
 							li
-									a(href="../../logout") Logout
+								a(href="../../logout") #{language.logout}
 		div.row
 			block leftContent
 			block rightContent
