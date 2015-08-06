@@ -1,24 +1,15 @@
 var express = require('express');
 var router = express.Router();
-var db = require("../db");
+var db = require("../config/db");
 var Entries = db.model('entries');
 var User = db.model('users');
 var session = require('express-session');
+var language=require('../config/language.js');
+var languageCases=require('../config/languageCases.js');
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  Entries.find(function (err, posts) {
-    res.render('index', {
-      posts: posts,
-      username: req.session.username
-    });
-  });
-  if(req.session.username==undefined){
-    req.session.username="";
-    req.session.isAdmin=false;
-    req.session.isBanned=false;
-  }
-  console.log(req.session.username)
-});
+
+
+router.get('/', languageCases);
 
 router.post('/', function (req, res, next) {
   console.dir(req);
@@ -89,6 +80,17 @@ router.get('/logout', function (req, res, next) {
   req.session.isBanned = false;
   res.redirect('../');
 })
-
+router.get('/tr', function (req, res, next) {
+  req.session.language = "tr";
+  res.redirect('../');
+});
+router.get('/de', function (req, res, next) {
+  req.session.language = "de";
+  res.redirect('../');
+})
+router.get('/en', function (req, res, next) {
+  req.session.language = "en";
+  res.redirect('../');
+})
 
 module.exports = router;

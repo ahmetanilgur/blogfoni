@@ -1,7 +1,11 @@
-extends ./boilerplate_2.jade
+extends ./boilerplate.jade
 block leftContent
 	div.col.s12
 		h5 User Profile
+		p.center  
+			i.material-icons.large.center perm_identity 
+		h4.center #{username}
+		h6.center Number of posts: #{posts.length}
 		ul.collection
 			each post in posts
 				li.collection-item.avatar
@@ -9,10 +13,10 @@ block leftContent
 					span.title
 						a(href="../../" style="float:right")
 							i.material-icons skip_previous
+						a(href="../../posts/#{post._id}" style="float:right")
+							i.material-icons visibility
 					h5 #{post.topic}
-					br
 					p!= post.entry
+					b(style="float:right")  #{post.date}
 					br
-					br
-					b(style="float:right") #{post.username}, #{post.date}
 include footer

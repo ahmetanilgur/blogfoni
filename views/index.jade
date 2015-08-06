@@ -1,31 +1,30 @@
 extends ./boilerplate.jade
 block leftContent
 		div.col.s5
-			h5.center Shoot-a-post!
+			h5.center #{language.shootAPost} 
 				br
 				br
-				
 				if !username
 					i.material-icons.prefix.large visibility_off
-					h5.center You are posting as Anonymous 
+					h5.center #{language.youArePostingAs} Anonymous 
 				else 
 					i.material-icons.prefix.large done_all
-					h5.center You are posting as #{username} 
+					h5.center #{language.youArePostingAs} #{username} 
 			form(method="POST" action="/")
 				div.input-field.col.s12
 					i.material-icons.prefix info_outline
 					input#icon_prefix(name="topic"  type="text" class="validate")
-					label(for="icon_prefix") Topic
+					label(for="icon_prefix") #{language.topic} 
 				div.input-field.col.s12
 					i.material-icons.prefix label_outline
 					textarea#textarea1.materialize-textarea(name="entry")
-					label(for="textarea1") Entry
-				button.btn.waves-effect.waves-light.blue.right(type="submit" name="action") Submit 
+					label(for="textarea1") #{language.entry} 
+				button.btn.waves-effect.waves-light.blue.right(type="submit" name="action") #{language.submit} 
 				br
 				br
 		block rightContent
 		div.col.s6
-			h5.center Posts-shot:
+			h5.center #{language.postsShot} 
 			br
 			ul.collection
 				each post in posts
@@ -34,16 +33,9 @@ block leftContent
 							h4 #{post.topic}
 							span!= post.entry
 						div.modal-footer
-							a.modal-action.modal-close.waves-effect.waves-red.btn-flat(href="#!") Close
+							a.modal-action.modal-close.waves-effect.waves-red.btn-flat(href="#!") #{language.close} 
 					li.collection-item.avatar
 						i.material-icons.circle.red.lighten-1 comment
-						// span.title
-						// 	a(href="/posts/#{post._id}" style="float:right")
-						// 		i.material-icons visibility	
-						// 	a.modal-trigger(href="#modal#{post._id}" style="float:right")
-						// 		i.material-icons open_in_new	
-						// 	a(href="/delete/#{post._id}" style="float:right")
-						// 		i.material-icons delete
 						b #{post.topic} 
 						p!= post.entry
 							.right #{post.username}
@@ -62,39 +54,39 @@ block leftContent
 		//register modal
 		div.modal(id="registerModal")
 			div.modal-content
-				h4 Register
+				h4 #{language.register}
 				form(method="POST" action="registered")
 					div.input-field.col.s12
 						i.material-icons.prefix perm_identity
 						input#icon_prefix(name="username"  type="text" class="validate")
-						label(for="icon_prefix") Username
+						label(for="icon_prefix") #{language.username}
 					div.input-field.col.s12
 						i.material-icons.prefix https
 						input#icon_prefix(name="password"  type="password" class="validate")
-						label(for="textarea1") Password
-					button.btn.waves-effect.waves-light.blue(type="submit" name="action") Register 
+						label(for="textarea1") #{language.username}
+					button.btn.waves-effect.waves-light.blue(type="submit" name="action") #{language.register} 
 				div.modal-footer
-						a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") Close
+						a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") #{language.close}
 		//login modal
 		div.modal(id="loginmodal")
 						div.modal-content
-							h4 Login
+							h4 #{language.login}
 							form(method="POST" action="logged")
 								div.input-field.col.s12
 									i.material-icons.prefix perm_identity
 									input#icon_prefix(name="username"  type="text" class="validate")
-									label(for="icon_prefix") Username
+									label(for="icon_prefix") #{language.username}
 								div.input-field.col.s12
 									i.material-icons.prefix https
 									input#icon_prefix(name="password"  type="password" class="validate")
-									label(for="textarea1") Password
-								button.btn.waves-effect.waves-light.blue(type="submit" name="action") Login
+									label(for="textarea1") #{language.password}
+								button.btn.waves-effect.waves-light.blue(type="submit" name="action") #{language.login}
 						div.modal-footer
-							a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") Close
+							a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") #{language.close}
 		//error thrower
 		div.modal(id="errorModal")
 			div.modal-content
-				h4 Shit happened :(
+				h4 #{language.shit}
 					p #{error}
 				div.modal-footer
-						a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") Close
+						a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") #{language.close}

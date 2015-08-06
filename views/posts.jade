@@ -1,13 +1,13 @@
 extends ./boilerplate_2.jade
 block leftContent
 	div.col.s12
-		h5 Posts
+		h5 #{language.posts}
 		ul.collection
 			each post in posts
 				li.collection-item.avatar
 					i.material-icons.circle.red comment
 					span.title
-						a(href="../../" style="float:right")
+						a(href="../" style="float:right")
 							i.material-icons skip_previous
 					h5 #{post.topic}
 					br

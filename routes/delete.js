@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../db');
+var db = require('../config/db');
 var Mongo = db.model('entries');
+var language=require('../config/language.js')
 /* GET home page. */
 router.get('/', function (req, res, next) {
   Mongo.find(function (err, posts) {
