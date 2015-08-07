@@ -1,48 +1,33 @@
 var session = require('express-session');
-var language = require('../language');
+var language = require('../language.js');
 var db = require("../config/db");
 var Entries = db.model('entries');
+var language = require('../language.js')
 
 module.exports = function (req, res, next) {
-  var id = req.params.id;
-  Entries.remove({ _id: id }, function (err, success) {
-    if (success) {
-      Entries.find(function (err, posts) {
-        if (req.session.language) {
-          if (req.session.language == "tr") {
-            res.render('error', {
-              posts: posts,
-              language: language.tr,
-              username: req.sessionusername
-            }
-              );
+  getUsernameFromPost();
+  function getUsernameFromPost() {
+    Entries.findOne({ _id: req.params.id }, function (err, data) {
+      console.log(data.username);
+      if (data.username == req.session.username || req.session.isAdmin == true) {
+        Entries.remove({ _id: req.params.id }, function (err, success) {
+          if (!err) {
+            Entries.find(function (err, posts) {
+              res.redirect('../../');
+            })
           }
-          else if (req.session.language == "de") {
-            res.render('error', {
-              posts: posts,
-              language: language.de,
-              username: req.sessionusername
-            }
-              );
-          }
-          else {
-            res.render('error', {
-              posts: posts,
-              language: language.en,
-              username: req.sessionusername
-            }
-              );
-          }
-        }
-        else {
-          res.render('error', {
-            posts: posts,
-            language: language.en,
-            username: req.sessionusername
-          }
-            );
-        }
-      })
-    }
-  })
-};
+        })
+      }
+      else {
+        res.render('error', {
+          error: {
+            status: "You do not have the permission to delete posts of others.",
+            stack: "Access denied."
+          },
+          message: "Shit happens :(",
+          language:language.tr
+        })
+      }
+    })
+  }
+}

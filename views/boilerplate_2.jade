@@ -13,10 +13,7 @@ body
 					a.brand-logo.large.material-Icons(href="/" style="font-size:4rem") business 
 					b &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  blogfoni
 					ul#nav-mobile.right.hide-on-med-and-down
-						if !username
-							li
-								a(href='../../') #{language.back}
-						else 
+						if username 
 							li
 								a(href="#") Hello, #{username}
 							li
