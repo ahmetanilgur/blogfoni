@@ -5,50 +5,33 @@ var session = require('express-session');
 var language = require('../language.js')
 
 module.exports = function (req, res, next) {
+  // Get the ID parameter from front-face and use it in delete query on mongoose
   var id = req.params.id;
   Users.remove({ _id: id }, function (err, affectedRow) {
     if (err) console.log(err);
     else {
       Entries.find(function (err, posts) {
         Users.find(function (error, users) {
-          if (req.session.language) {
-            if (req.session.language == "tr") {
-              res.render('admin', {
-                posts: posts,
-                users: users,
-                username: req.session.username,
-                language: language.tr
-              });
-
-            }
-            else if (req.session.language == "de") {
-              res.render('admin', {
-                posts: posts,
-                users: users,
-                username: req.session.username,
-                language: language.de
-              });
-
-            }
-            else {
-              res.render('admin', {
-                posts: posts,
-                users: users,
-                username: req.session.username,
-                language: language.en
-              });
-
-            }
-          }
-          else {
-            res.render('admin', {
-              posts: posts,
-              users: users,
-              username: req.session.username,
-              language: language.en
-            });
-
-          }
+    function Renderer() {
+      if (req.session.language == "tr") {
+        var lang = language.tr
+      }
+      else if (req.session.language == "de") {
+        lang = language.de
+      }
+      else {
+        lang = language.en;
+      }
+      var page = {
+        posts: posts,
+        language: lang,
+        users:users
+      }
+      return page;
+    }
+    var page = Renderer(req.session.language);
+    res.locals.username = req.session.username;
+    res.render('admin', page);
         });
       });
     }

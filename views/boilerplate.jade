@@ -13,19 +13,55 @@ body
 					a.brand-logo.large.material-Icons(href="/" style="font-size:4rem") business 
 					b &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  blogfoni
 					ul#nav-mobile.right.hide-on-med-and-down
-						if !username
-							li
-								a.modal-trigger(href="#registerModal") #{language.register}
-							li
-								a.modal-trigger(href="#loginmodal") #{language.login}
-						else 
-							li
-									a(href="#") #{language.hello}, #{username}
-										if isAdmin
-											admin
-							li
-									a(href="../../logout") #{language.logout}								
+						if language
+							if !username
+								li
+									a.modal-trigger(href="#registerModal") #{language.register}
+								li
+									a.modal-trigger(href="#loginModal") #{language.login}
+							else 
+								li
+										a(href="#") #{language.hello}, #{username}
+								li
+										a(href="../../logout") #{language.logout}
+							if isAdmin
+								li
+										a(href="/admin") Admin Panel
 		div.row
 			block leftContent
 			block rightContent
+		//register modal
+	if language
+		div.modal(id="registerModal")
+			div.modal-content
+				h4 #{language.register}
+				form(method="POST" action="registered")
+					div.input-field.col.s12
+						i.material-icons.prefix perm_identity
+						input#icon_prefix(name="username"  type="text" class="validate")
+						label(for="icon_prefix") #{language.username}
+					div.input-field.col.s12
+						i.material-icons.prefix https
+						input#icon_prefix(name="password"  type="password" class="validate")
+						label(for="textarea1") #{language.username}
+					button.btn.waves-effect.waves-light.blue(type="submit" name="action") #{language.register} 
+				div.modal-footer
+						a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") #{language.close}
+		//login modal
+	if language
+		div.modal(id="loginModal")
+						div.modal-content
+							h4 #{language.login}
+							form(method="POST" action="logged")
+								div.input-field.col.s12
+									i.material-icons.prefix perm_identity
+									input#icon_prefix(name="username"  type="text" class="validate")
+									label(for="icon_prefix") #{language.username}
+								div.input-field.col.s12
+									i.material-icons.prefix https
+									input#icon_prefix(name="password"  type="password" class="validate")
+									label(for="textarea1") #{language.password}
+								button.btn.waves-effect.waves-light.blue(type="submit" name="action") #{language.login}
+						div.modal-footer
+							a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") #{language.close}
 include footer

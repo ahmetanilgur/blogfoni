@@ -5,15 +5,17 @@ var Entries = db.model('entries');
 var language = require('../language.js')
 
 module.exports = function (req, res, next) {
-  getUsernameFromPost();
+  getUsernameFromPost(); // Post ID kullanarak username döndürür.
   function getUsernameFromPost() {
     Entries.findOne({ _id: req.params.id }, function (err, data) {
       console.log(data.username);
-      if (data.username == req.session.username || req.session.isAdmin == true) {
+      if (data.username == req.session.username || req.session.isAdmin == true) { 
+        // ID ile bulduğumuz username, session'da kayıtlı olan username'e eşit ise true.
         Entries.remove({ _id: req.params.id }, function (err, success) {
           if (!err) {
             Entries.find(function (err, posts) {
-              res.redirect('../../');
+              res.redirect('../../'); 
+              // Hata yoksa indexe gönder.
             })
           }
         })
@@ -21,11 +23,11 @@ module.exports = function (req, res, next) {
       else {
         res.render('error', {
           error: {
+            message: "Shit happens :(",
             status: "You do not have the permission to delete posts of others.",
             stack: "Access denied."
-          },
-          message: "Shit happens :(",
-          language:language.tr
+          },  
+          language:language.en
         })
       }
     })

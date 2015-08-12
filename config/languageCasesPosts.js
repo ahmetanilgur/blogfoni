@@ -7,36 +7,24 @@ var express = require('express');
 module.exports = function (req, res, next) {
   var id = req.params.id;
   Entries.find({ _id: id }, function (err, posts) {
-    if (req.session.language) {
+    function Renderer() {
       if (req.session.language == "tr") {
-        res.render('posts', {
-          posts: posts,
-          username: req.session.username,
-          language: language.tr
-        });
+        var lang = language.tr
       }
       else if (req.session.language == "de") {
-        res.render('posts', {
-          posts: posts,
-          username: req.session.username,
-          language: language.de
-        });
+        lang = language.de
       }
       else {
-        res.render('posts', {
-          posts: posts,
-          username: req.session.username,
-          language: language.en
-        });
+        lang = language.en;
       }
-
-    }
-    else {
-      res.render('posts', {
+      var page = {
         posts: posts,
-        username: req.session.username,
-        language: language.en
-      });
+        language: lang
+      }
+      return page;
     }
+    var page = Renderer(req.session.language);
+    res.locals.username = req.session.username;
+    res.render('posts', page);
   })
 };

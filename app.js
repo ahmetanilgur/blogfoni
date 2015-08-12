@@ -1,4 +1,10 @@
 /// <reference path="typings/node/node.d.ts"/>
+
+/**
+ * MIT Licenced
+ * @author ahmetanilgur@gmail.com (Ahmet Anıl GÜR)
+ */
+ 
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -21,15 +27,13 @@ app.set('view engine', 'jade');
 
 
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express(path.join(__dirname, 'config')));
+app.use(express.static(path.join(__dirname, 'config')));
 app.use(session({secret:'adabazar1234567890'}));
 
 app.use('/', routes);

@@ -51,38 +51,6 @@ block leftContent
 									a(href="/delete/#{post._id}")
 										i.material-icons delete
 							br
-		//register modal
-		div.modal(id="registerModal")
-			div.modal-content
-				h4 #{language.register}
-				form(method="POST" action="registered")
-					div.input-field.col.s12
-						i.material-icons.prefix perm_identity
-						input#icon_prefix(name="username"  type="text" class="validate")
-						label(for="icon_prefix") #{language.username}
-					div.input-field.col.s12
-						i.material-icons.prefix https
-						input#icon_prefix(name="password"  type="password" class="validate")
-						label(for="textarea1") #{language.username}
-					button.btn.waves-effect.waves-light.blue(type="submit" name="action") #{language.register} 
-				div.modal-footer
-						a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") #{language.close}
-		//login modal
-		div.modal(id="loginmodal")
-						div.modal-content
-							h4 #{language.login}
-							form(method="POST" action="logged")
-								div.input-field.col.s12
-									i.material-icons.prefix perm_identity
-									input#icon_prefix(name="username"  type="text" class="validate")
-									label(for="icon_prefix") #{language.username}
-								div.input-field.col.s12
-									i.material-icons.prefix https
-									input#icon_prefix(name="password"  type="password" class="validate")
-									label(for="textarea1") #{language.password}
-								button.btn.waves-effect.waves-light.blue(type="submit" name="action") #{language.login}
-						div.modal-footer
-							a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") #{language.close}
 		//error thrower
 		div.modal(id="errorModal")
 			div.modal-content

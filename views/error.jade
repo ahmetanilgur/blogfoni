@@ -1,5 +1,6 @@
 extends ./boilerplate_2.jade
 block leftContent
-  h4.center= message
-  h5.center= error.status
-  p.center #{error.stack}
+  if error
+    h4.center= error.message
+    h5.center= error.status
+    p.center #{error.stack}

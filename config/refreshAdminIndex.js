@@ -1,4 +1,5 @@
 var db = require("../config/db");
+var errors = require('../config/errors.js')
 var Entries = db.model('entries');
 var Users = db.model('users');
 var session = require('express-session');
@@ -6,88 +7,62 @@ var language = require('../language.js')
 
 
 module.exports = function (req, res, next) {
+	// If user logs in with an admin permit, redirect to admin page with the page data
 	if (req.session.isAdmin) {
 		Entries.find(function (err, posts) {
 			Users.find(function (error, users) {
-				if(req.session.language){
-					if(req.session.language=="tr"){
-						res.render('admin', {
-							posts: posts,
-							users: users,
-							username: req.session.username,
-							language: language.tr
-						});
+				function Renderer() {
+					if (req.session.language == "tr") {
+						var lang = language.tr;
 					}
-					if(req.session.language=="de"){
-						res.render('admin', {
-							posts: posts,
-							users: users,
-							username: req.session.username,
-							language: language.de
-						});
+					else if (req.session.language == "de") {
+						lang = language.de;
 					}
-					else{
-						res.render('admin', {
-							posts: posts,
-							users: users,
-							username: req.session.username,
-							language: language.tr
-						});
+					else {
+						lang = language.en;
 					}
+					var page = {
+						users: users,
+						posts: posts,
+						language: lang
+					}
+					return page;
 				}
-					else{
-						res.render('admin', {
-							posts: posts,
-							users: users,
-							username: req.session.username,
-							language: language.tr
-						});
-					}
-			});
-		});
+				var page = Renderer(req.session.language);
+				res.locals.username = req.session.username;
+				res.locals.isAdmin = req.session.isAdmin;
+				res.locals.isBanned = req.session.isBanned;
+
+				res.render('admin', page);
+			})
+		})
 	}
-	else {if(req.session.language){
-					if(req.session.language=="tr"){
-							res.render('error', {
-			message: 'Permission denied',
-			error: {
-				status: "You no look like an adminos.",
-				stack: "Plz go awai."
-			},
-			language: language.tr
-		})
-					}
-					else if(req.session.language=="de"){
-							res.render('error', {
-			message: 'Permission denied',
-			error: {
-				status: "You no look like an adminos.",
-				stack: "Plz go awai."
-			},
-			language: language.de
-		})
-					}
-					else{
-							res.render('error', {
-			message: 'Permission denied',
-			error: {
-				status: "You no look like an adminos.",
-				stack: "Plz go awai."
-			},
-			language: language.en
-		})
-					}
-					}else{
-						
-		res.render('error', {
-			message: 'Permission denied',
-			error: {
-				status: "You no look like an adminos.",
-				stack: "Plz go awai."
-			},
-			language: language.tr
-		})
-					}
-	
-	}
+	else {
+								function Renderer() {
+			if (req.session.language == "tr") {
+				var lang = language.tr;
+				var error = errors.tr.permissionDenied;
+			}
+			else if (req.session.language == "de") {
+				lang = language.de;
+				error = errors.de.permissionDenied
+			}
+			else {
+				lang = language.en;
+				error = errors.en.permissionDenied
+			}
+			var page = {
+				error: error,
+				language: lang
+			}
+			return page;
+		}
+		var page = Renderer(req.session.language);
+		res.locals.username = req.session.username;
+		res.locals.isAdmin = req.session.isAdmin;
+		res.locals.isBanned = req.session.isBanned;
+
+		res.render('error', page);
+
+				}
 }

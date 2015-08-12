@@ -5,9 +5,11 @@ var session = require('express-session');
 var language = require('../language.js')
 
 module.exports=function (req, res, next) {
+  // Get username and password from front
   var username = req.body.username;
   var password = req.body.password;
   Users.find({ username: username }, function (err, found) {
+    //if not found redirect to error page.
     if (err) {
       console.log(err);
       res.render('error', {
@@ -17,6 +19,7 @@ module.exports=function (req, res, next) {
       })
     }
     else {
+      // if the password found in database matches the one in param, grant access.
       if (found[0].password == password) {
         console.log("Username: " + found[0].username + " \nPassword: " + found[0].password);
         req.session.username = username;
@@ -29,6 +32,7 @@ module.exports=function (req, res, next) {
         });
       }
       else {
+        // in case of no match, error page.
         res.render('error', {
           message: 'WRONG! (password)',
           error: {

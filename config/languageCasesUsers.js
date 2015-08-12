@@ -1,40 +1,30 @@
 var session = require('express-session');
-var language = require('../language');
+var language = require('../language.js');
 var db = require("../config/db");
 var Entries = db.model('entries');
 
 module.exports = function (req, res, next) {
   var username = req.params.username;
   Entries.find({ username: username }, function (err, posts) {
-    if (req.session.language) {
+    function Renderer() {
       if (req.session.language == "tr") {
-        res.render('users', {
-          username: username,
-          posts: posts,
-          language: language.tr
-        });
+        var lang = language.tr
       }
       else if (req.session.language == "de") {
-        res.render('users', {
-          username: username,
-          posts: posts,
-          language: language.de
-        });
+        lang = language.de
       }
       else {
-        res.render('users', {
-          username: username,
-          posts: posts,
-          language: language.en
-        });
+        lang = language.en;
       }
-    }
-    else {
-      res.render('users', {
-        username: username,
+      var page = {
+        searchedUsername:username,
         posts: posts,
-        language: language.en
-      });
+        language: lang
+      }
+      return page;
     }
+    var page = Renderer(req.session.language);
+    res.locals.username = req.session.username;
+    res.render('users', page);
   })
 }

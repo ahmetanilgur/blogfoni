@@ -3,6 +3,9 @@ block leftContent
 		div.col.s5
 			h5 Ban Hammer!
 			br
+			form(method="POST" action="/users")
+				input(name="searchbox" type="text" placeholder="Search for a user")
+				button.btn.waves-effect.waves-light.blue.right(type="submit" name="action") Search
 			table.hoverable
 				thead
 					tr
@@ -15,11 +18,11 @@ block leftContent
 						td #{user.username}
 						td
 							if !user.isBanned
-								a(href="/admin/ban/#{user._id}").material-icons(name="#{user._id}") lock_open
+								a.material-icons(href="/admin/ban/#{user._id}" name="#{user._id}") lock_open
 							else 
-								a(href="/admin/ban/#{user._id}").material-icons(name="#{user._id}") lock
+								a.material-icons(href="/admin/unban/#{user._id}" name="#{user._id}") lock
 						td
-							a(href="/admin/delete/#{user._id}").material-icons(name="#{user._id}")     delete
+							a.material-icons(href="/admin/delete/#{user._id}" name="#{user._id}")     delete
 		block rightContent
 		div.col.s6
 			h5.center Posts-shot:
@@ -34,13 +37,6 @@ block leftContent
 							a.modal-action.modal-close.waves-effect.waves-red.btn-flat(href="#!") Close
 					li.collection-item.avatar
 						i.material-icons.circle.red.lighten-1 comment
-						// span.title
-						// 	a(href="/posts/#{post._id}" style="float:right")
-						// 		i.material-icons visibility	
-						// 	a.modal-trigger(href="#modal#{post._id}" style="float:right")
-						// 		i.material-icons open_in_new	
-						// 	a(href="/delete/#{post._id}" style="float:right")
-						// 		i.material-icons delete
 						b #{post.topic} 
 						p!= post.entry
 							.right #{post.username}

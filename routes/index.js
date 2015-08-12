@@ -8,7 +8,7 @@ var language = require('../language.js');
 var languageCasesIndex = require('../config/languageCasesIndex.js');
 var indexPost = require('../config/indexPost.js');
 var indexRegistered = require('../config/indexRegistered.js');
-var indexLogged = require('../config/indexRegistered.js');
+var indexLogged = require('../config/indexLogged.js');
 
 /* GET home page. */
 
@@ -39,5 +39,10 @@ router.get('/en', function (req, res, next) {
   req.session.language = "en";
   res.redirect('../');
 })
+router.use(function (req, res, next) {
+  res.locals.session = req.session;
+  next();
+});
+
 
 module.exports = router;
