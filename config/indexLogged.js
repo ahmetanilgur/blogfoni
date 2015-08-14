@@ -19,7 +19,7 @@ var language = require('../language.js');
 module.exports = function (req, res, next) {
   var username = req.body.username;
   var password = req.body.password;
-  User.findOne({ username: username }, function (err, found) {
+  User.findOne({ username:username }, function (err, found) {
     if (err) {
       console.log(err);
       res.render('error', {
@@ -28,7 +28,16 @@ module.exports = function (req, res, next) {
       })
     }
     else {
-      if (found.password == password && (found.isBanned==false || null)) {
+      if(found==null){
+           res.render('error', {
+          error: {
+            message: 'Username was not found',
+            status: "Invalid info",
+            stack: "Please go back to login page and try to login again."
+          }
+        })
+      }
+      else if (found.password == password && (found.isBanned==false || null)) {
         console.log("Username: " + found.username + " \nPassword: " + found.password);
         req.session.username = found.username;
         req.session.isBanned = found.isBanned;

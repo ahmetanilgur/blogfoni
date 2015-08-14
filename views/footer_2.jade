@@ -1,6 +1,18 @@
 footer.page-footer
-	div.footer-copyright
-		div.center © markafoni NGDevs   
+	div.container
+		div.row
+			div.col.l6.s12
+				h5.white-text Blogfoni
+				p.grey-text.text-lighten-4 this project was created in markafoni & will be used as an internal sharing platform among the IT team
+			div.col.l6.s12
+				h5.white-text #{language.language}
+				a(href="/tr").grey-text.text-lighten-4 #{language.turkish}
+				br
+				a(href="/en").grey-text.text-lighten-4 #{language.english}
+				br
+				a(href="/de").grey-text.text-lighten-4 #{language.german}
+	div.footer-copyright.center
+		p Copyright (c) 2015 Ahmet Anıl GÜR  
 script(src="../../../jquery/dist/jquery.js")
 script(src="../../../materialize-css/bin/materialize.js")
 script(src="../../../javascripts/clientSide.js")

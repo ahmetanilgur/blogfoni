@@ -23,8 +23,8 @@ module.exports = function (req, res, next) {
         lang = language.en;
       }
       var page = {
-        searchedUsername:username,
-        posts: posts,
+        searchedUsername:posts.length>0 ? username : "No posts.",
+        posts: posts.length>0 ? posts : 0,
         language: lang
       }
       return page;

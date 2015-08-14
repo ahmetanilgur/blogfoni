@@ -5,7 +5,8 @@ block leftContent
 		p.center  
 			i.material-icons.large.center perm_identity 
 		h4.center #{searchedUsername}
-		h6.center Number of posts: #{posts.length}
+		if posts.length
+			h6.center Number of posts: #{posts.length}
 		ul.collection
 			each post in posts
 				li.collection-item.avatar

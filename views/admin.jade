@@ -5,13 +5,13 @@ block leftContent
 			br
 			form(method="POST" action="/users")
 				input(name="searchbox" type="text" placeholder="Search for a user")
-				button.btn.waves-effect.waves-light.blue.right(type="submit" name="action") Search
+				button.btn.waves-effect.waves-light.blue.right(type="submit" name="action") #{language.search}
 			table.hoverable
 				thead
 					tr
-						th(data-field="username") Username
-						th(data-field="banButton") Ban
-						th(data-field="deleteButton") Delete
+						th(data-field="username") #{language.username}
+						th(data-field="banButton") #{language.ban}
+						th(data-field="deleteButton") #{language.del}
 				tbody
 				each user in users
 					tr(name="#{user._id}")
@@ -25,7 +25,7 @@ block leftContent
 							a.material-icons(href="/admin/delete/#{user._id}" name="#{user._id}")     delete
 		block rightContent
 		div.col.s6
-			h5.center Posts-shot:
+			h5.center #{language.postsShot}:
 			br
 			ul.collection
 				each post in posts
@@ -34,7 +34,7 @@ block leftContent
 							h4 #{post.topic}
 							span!= post.entry
 						div.modal-footer
-							a.modal-action.modal-close.waves-effect.waves-red.btn-flat(href="#!") Close
+							a.modal-action.modal-close.waves-effect.waves-red.btn-flat(href="#!") #{language.close}
 					li.collection-item.avatar
 						i.material-icons.circle.red.lighten-1 comment
 						b #{post.topic} 
@@ -54,31 +54,31 @@ block leftContent
 							br
 		div.modal(id="registerModal")
 			div.modal-content
-				h4 Register
+				h4 #{language.register}
 				form(method="POST" action="registered")
 					div.input-field.col.s12
 						i.material-icons.prefix perm_identity
 						input#icon_prefix(name="username"  type="text" class="validate")
-						label(for="icon_prefix") Username
+						label(for="icon_prefix") #{language.username}
 					div.input-field.col.s12
 						i.material-icons.prefix https
 						input#icon_prefix(name="password"  type="password" class="validate")
-						label(for="textarea1") Password
+						label(for="textarea1") #{language.password}
 					button.btn.waves-effect.waves-light.red(type="submit" name="action") Register 
 				div.modal-footer
-						a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") Close
+						a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") #{language.close}
 		div.modal(id="loginmodal")
 						div.modal-content
-							h4 Login
+							h4 #{language.login}
 							form(method="POST" action="logged")
 								div.input-field.col.s12
 									i.material-icons.prefix perm_identity
 									input#icon_prefix(name="username"  type="text" class="validate")
-									label(for="icon_prefix") Username
+									label(for="icon_prefix") #{language.username}
 								div.input-field.col.s12
 									i.material-icons.prefix https
 									input#icon_prefix(name="password"  type="password" class="validate")
-									label(for="textarea1") Password
-								button.btn.waves-effect.waves-light.red(type="submit" name="action") Login
+									label(for="textarea1") #{language.password}
+								button.btn.waves-effect.waves-light.red(type="submit" name="action") #{language.login}
 						div.modal-footer
-							a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") Close
+							a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") #{language.close}

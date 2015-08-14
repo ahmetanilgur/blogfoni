@@ -16,7 +16,15 @@ module.exports = ({
 		topic:"Titel",
 		entry:"Text",
 		back:"Zurück",
-		posts:"Beiträge"
+		posts:"Beiträge",
+		ban:"Verbote",
+		del:"Löschen",
+		search:"Suchen",
+		turkish:"Türkisch",
+		english:"Englisch",
+		german:"Deutsch",
+		language:"Sprachen",
+		footerText:"Dieses Projekt wurde im Markafoni erstellt und wird als interne Sharing-Plattform unter den IT-Team verwendet werden"
 	},
 	en:{
 		hello: 'Hello',
@@ -35,7 +43,15 @@ module.exports = ({
 		topic:"Title",
 		entry:"Text",
 		back:"Back",
-		posts:"Posts"
+		posts:"Posts",
+		ban:"Ban",
+		del:"Delete",
+		search:"Search",
+		turkish:"Turkish",
+		english:"English",
+		german:"German",
+		language:"Languages",
+		footerText:"this project was created in markafoni & will be used as an internal sharing platform among the IT team"
 	},
 	tr:{
 		hello: 'Merhaba',
@@ -54,6 +70,14 @@ module.exports = ({
 		topic:"Başlık",
 		entry:"Yazı",
 		back:"Geri",
-		posts:"Yazılar"
+		posts:"Yazılar",
+		ban:"Yasakla",
+		del:"Sil",
+		search:"Ara",
+		turkish:"Türkçe",
+		english:"İngilizce",
+		german:"Almanca",
+		language:"Diller",
+		footerText:"Bu proje markafoni bünyesinde IT takımının aralarında paylaşım yapmaları amacıyla yaratılmıştır"
 	}
 });

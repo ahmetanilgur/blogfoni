@@ -2,6 +2,7 @@ html
 	link(rel="stylesheet", href="../../../materialize-css/bin/materialize.css")
 	link(rel="stylesheet", href="../../../stylesheets/style.css")
 	link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+	link(rel="stylesheet", href="../ionicons/css/ionicons.css")
 	script(type="text/javascript" src="../../../../../vendor/booklet-1.0.0.js")
 	script(src="../../../javascripts/app.js")
 	script(src="../../../javascripts/views/index.js")
@@ -9,9 +10,8 @@ html
 body
 		nav
 			div
-				.nav-wrapper
-					a.brand-logo.large.material-Icons(href="/" style="font-size:4rem") business 
-					b &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  blogfoni
+				.nav-wrapper &nbsp; &nbsp; &nbsp;
+					a.ion-leaf(href="/" style="font-size:60px") 
 					ul#nav-mobile.right.hide-on-med-and-down
 						if language
 							if !username

@@ -24,7 +24,7 @@ module.exports = function (req, res, next) {
       }
       var page = {
         posts: posts,
-        language: language.tr
+        language: lang
       }
       return page;
     }
