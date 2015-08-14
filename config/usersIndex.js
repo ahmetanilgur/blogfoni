@@ -1,8 +1,13 @@
+/**
+* A module to show a 404 error page in a nicer 
+* way to those who tried to access '/users'
+*/
 var session = require('express-session');
 var language = require('../language');
 var db = require("../config/db");
 var Entries = db.model('entries');
 var error = require("../config/errors")
+
 
 module.exports = function (req, res, next) {
   Entries.find(function (err, posts) {

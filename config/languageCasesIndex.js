@@ -1,7 +1,8 @@
 /**
  * @define Renderer decides whether language is tr, en or de
- * @param {list} lang refers to language stored in session.
- * @param {list} posts refers to posts sent by user.
+ * @param {string} lang refers to language stored in session.
+ * @param {object} posts refers to posts sent by user.
+ * @param {object} page Renderer object
  */
 
 var session = require('express-session');

@@ -1,8 +1,16 @@
+/**
+* A module to register an admin (to be implemented)
+* @param {object} user
+* @param {string} username
+* @param {string} password
+* 
+*/
 var db = require("../config/db");
 var Entries = db.model('entries');
 var Users = db.model('users');
 var session = require('express-session');
 var language = require('../language.js')
+
 
 module.exports=function (req, res, next) {
   var user = new Users({

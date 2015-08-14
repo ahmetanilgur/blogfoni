@@ -1,3 +1,7 @@
+/**
+* A module to post a blog-text to the db
+* @param {object} post
+*/
 var db = require("../config/db");
 var Entries = db.model('entries');
 var User = db.model('users');

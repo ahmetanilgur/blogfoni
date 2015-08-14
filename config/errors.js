@@ -16,7 +16,7 @@ module.exports = ({
 	tr: {
 		badUrl: {
 			status: 'Yanlış url girdin.',
-			stack: "Hack mack olmaz hacı..",
+			stack: "Lütfen URL'i kontrol et ve tekrar dene",
 			message: "Sanırım kayboldun"
 		},
 

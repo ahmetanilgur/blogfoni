@@ -1,3 +1,6 @@
+/**
+* A page designed to hand out a 404 error in a nicer way.
+*/
 var session = require('express-session');
 var language = require('../language');
 var db = require("../config/db");

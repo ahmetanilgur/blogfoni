@@ -1,8 +1,20 @@
+/**
+* A module that redirects users to 
+* index page if user has managed 
+* to login into system
+* using credentials
+* checks whether username matches 
+* with the password from the database
+* @param {string} password
+* @param {string} username
+* 
+*/
 var db = require("../config/db");
 var Entries = db.model('entries');
 var User = db.model('users');
 var session = require('express-session');
 var language = require('../language.js');
+
 
 module.exports = function (req, res, next) {
   var username = req.body.username;

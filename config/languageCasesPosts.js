@@ -1,8 +1,13 @@
+/**
+* A module to show posts which are stored in the db
+* @param {string} id
+*/
 var session = require('express-session');
 var language = require('../language.js');
 var db = require("../config/db");
 var Entries = db.model('entries');
 var express = require('express');
+
 
 module.exports = function (req, res, next) {
   var id = req.params.id;

@@ -4,6 +4,12 @@ var Users = db.model('users');
 var session = require('express-session');
 var language = require('../language.js')
 
+/**
+* A module for admins to log in (to be implemented in the future)
+* @param {string} username
+* @param {string} password
+*/
+
 module.exports=function (req, res, next) {
   // Get username and password from front
   var username = req.body.username;

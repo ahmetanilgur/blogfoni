@@ -1,8 +1,15 @@
+/**
+* A module to delete a post of any users 
+* RESTful style.
+* @function getUsernameFromPost
+* @param {string} id
+*/
 var session = require('express-session');
 var language = require('../language.js');
 var db = require("../config/db");
 var Entries = db.model('entries');
 var language = require('../language.js')
+
 
 module.exports = function (req, res, next) {
   getUsernameFromPost(); // Post ID kullanarak username döndürür.

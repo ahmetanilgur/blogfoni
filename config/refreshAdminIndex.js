@@ -1,10 +1,14 @@
+
+/**
+* A module to show both posts and users in one page side by side
+* and lets admins see banned/unbanned users
+*/
 var db = require("../config/db");
 var errors = require('../config/errors.js')
 var Entries = db.model('entries');
 var Users = db.model('users');
 var session = require('express-session');
 var language = require('../language.js')
-
 
 module.exports = function (req, res, next) {
 	// If user logs in with an admin permit, redirect to admin page with the page data

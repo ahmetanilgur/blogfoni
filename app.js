@@ -1,8 +1,16 @@
 /// <reference path="typings/node/node.d.ts"/>
 
-/**
- * MIT Licenced
- * @author ahmetanilgur@gmail.com (Ahmet Anıl GÜR)
+/*!
+ * Tiny blog system with CMS & customization
+ *
+ * Copyright (c) 2015 Ahmet Anıl GÜR
+ * @author ahmetanilgur@gmail.com
+ *
+ * Licensed under MIT
+ * http://www.opensource.org/licenses/mit-license.php
+ *
+ *
+ *
  */
  
 var express = require('express');

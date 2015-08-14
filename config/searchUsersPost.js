@@ -1,7 +1,13 @@
+/**
+* A module to show searched users by POST method 
+* @param {string} username
+*/
+
 var session = require('express-session');
 var language = require('../language.js');
 var db = require("../config/db");
 var Entries = db.model('entries');
+
 
 module.exports = function (req, res, next) {
   var username = req.body.searchbox;

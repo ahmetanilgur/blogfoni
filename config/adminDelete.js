@@ -1,8 +1,15 @@
+/**
+* A module to delete selected user,
+* RESTful style.
+* @param {string} id
+* @param {string} language
+*/
 var db = require("../config/db");
 var Entries = db.model('entries');
 var Users = db.model('users');
 var session = require('express-session');
 var language = require('../language.js')
+
 
 module.exports = function (req, res, next) {
   // Get the ID parameter from front-face and use it in delete query on mongoose
