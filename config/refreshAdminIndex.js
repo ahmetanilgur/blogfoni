@@ -3,6 +3,7 @@
 * A module to show both posts and users in one page side by side
 * and lets admins see banned/unbanned users
 */
+
 var db = require("../config/db");
 var errors = require('../config/errors.js')
 var Entries = db.model('entries');

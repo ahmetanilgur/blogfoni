@@ -10,6 +10,7 @@ var db = require("../config/db");
 var Entries = db.model('entries');
 var language = require('../language.js');
 var lang;
+
 module.exports = function (req, res, next) {
   Entries.find(function (err, posts) {
     function Renderer() {
