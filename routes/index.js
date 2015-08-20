@@ -9,7 +9,6 @@ var languageCasesIndex = require('../config/languageCasesIndex.js');
 var indexPost = require('../config/indexPost.js');
 var indexRegistered = require('../config/indexRegistered.js');
 var indexLogged = require('../config/indexLogged.js');
-var _ = require('underscore')._;
 
 /* GET home page. */
 
@@ -46,12 +45,8 @@ router.use(function (req, res, next) {
 });
 
 router.get('/angular', function (req, res, next) {
-  var liste=[];
   Entries.find({}, function(err,playlist){
-    playlist.forEach(function(element) {
-      liste.push(element.topic);
-    }, this,_.object(liste));
-    res.json(liste)
+    res.json(playlist);
   })
 })
 module.exports = router;
