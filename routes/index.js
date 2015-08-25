@@ -5,7 +5,7 @@ var Entries = db.model('entries');
 var User = db.model('users');
 var session = require('express-session');
 var language = require('../language.js');
-var languageCasesIndex = require('../config/languageCasesIndex.js');
+var indexGet = require('../config/indexGet.js');
 var indexPost = require('../config/indexPost.js');
 var indexRegistered = require('../config/indexRegistered.js');
 var indexLogged = require('../config/indexLogged.js');
@@ -13,7 +13,7 @@ var indexLogged = require('../config/indexLogged.js');
 /* GET home page. */
 
 
-router.get('/', languageCasesIndex);
+router.get('/', indexGet);
 
 router.post('/', indexPost);
 
