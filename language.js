@@ -1,6 +1,6 @@
 module.exports = ({
 	de:{
-		hello: 'Hallo',
+		hello: 'Hallo', // MSG_HELLO olacak şekilde değiştirelim
 		hbday : "Herzlichen Glueckwunsch",
 		login : "Einloggen",
 		logout:"Abmelden",

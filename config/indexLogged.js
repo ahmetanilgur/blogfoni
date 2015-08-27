@@ -23,8 +23,10 @@ module.exports = function (req, res, next) {
     if (err) {
       console.log(err);
       res.render('error', {
-        message: "Dörtyüzdört!",
-        error: err
+        message: "DB connection error!",
+            status: err,
+            stack: "DB Connection was interrupted",
+            error: err
       })
     }
     else {
@@ -34,7 +36,8 @@ module.exports = function (req, res, next) {
             message: 'Username was not found',
             status: "Invalid info",
             stack: "Please go back to login page and try to login again."
-          }
+          },
+          language:language.en
         })
       }
       else if (found.password == password && (found.isBanned==false || null)) {
@@ -52,7 +55,8 @@ module.exports = function (req, res, next) {
             message: 'You have been banned!',
             status: "This account has been suspended by an admin",
             stack: "Please contact us if you think that it is a mistake"
-          }
+          },
+          language:language.en
         })        
       }
       else {
@@ -61,7 +65,8 @@ module.exports = function (req, res, next) {
             message: 'User/pass mismatch',
             status: "The password you have entered does not match the username.",
             stack: "Please go back to login page and try to login again."
-          }
+          },
+          language:language.en
         })
       }
     }

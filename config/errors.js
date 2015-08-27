@@ -1,7 +1,7 @@
 module.exports = ({
 	en: {
 		badUrl: {
-			status: 'You have entered a bad url.',
+			status: 'You have entered a bad url.', // MSG_STATUS olarak değişsin error.js
 			stack: "Please wander around safe places. No hackerish stuff.",
 			message: "You are lost! I guess.."
 		},

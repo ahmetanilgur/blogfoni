@@ -11,29 +11,30 @@ var Entries = db.model('entries');
 var language = require('../language.js');
 var lang;
 
+
 module.exports = function (req, res, next) {
   Entries.find(function (err, posts) {
-    function Renderer() {
-      if (req.session.language == "tr") {
-       lang = language.tr;
+    function Renderer(tempLang) {
+      if (tempLang == "tr") {
+        lang = language.tr;
       }
-      else if (req.session.language == "de") {
+      else if (tempLang == "de") {
         lang = language.de;
       }
       else {
         lang = language.en;
       }
-      var page = {
+      var pageData = {
         posts: posts,
         language: lang
       }
-      return page;
+      return pageData;
     }
-    var page = Renderer(req.session.language);
     res.locals.username = req.session.username;
     res.locals.isAdmin = req.session.isAdmin;
     res.locals.isBanned = req.session.isBanned;
-    res.render('index', page);
+    var indexPage = Renderer(req.session.language);
+    res.render('index', indexPage);
   });
   if (typeof req.session.username == 'undefined') {
     req.session.username = "";
