@@ -1,23 +1,24 @@
-footer.page-footer
-	div.container
-		div.row
-			div.col.l6.s12
-				h5.white-text Blogfoni
-				p.grey-text.text-lighten-4 #{language.MSG_FOOTERTEXT}
-					br
-					br
-					a.icon.ion-social-github.grey-text.text-lighten-4(href="http://github.com/ahmetanilgur")  ahmetanilgur
-			div.col.l6.s12
-					h5.white-text #{language.MSG_LANGUAGE}
-					a(href="/tr").grey-text.text-lighten-4 #{language.MSG_TURKISH}
-					br
-					a(href="/en").grey-text.text-lighten-4 #{language.MSG_ENGLISH}
-					br
-					a(href="/de").grey-text.text-lighten-4 #{language.MSG_GERMAN}
-	div.footer-copyright.center
-		p Copyright (c) 2015 Ahmet Anıl GÜR  
-script(src="../../../jquery/dist/jquery.js")
-script(src="../../../materialize-css/bin/materialize.js")
-script(src="../../../javascripts/clientSide.js")
-script(src="../../../javascripts/modal.js")
-script(src="../../../javascripts/views/nav.js")
+if language
+	footer.page-footer
+		div.container
+			div.row
+				div.col.l6.s12
+					h5.white-text Blogfoni
+					p.grey-text.text-lighten-4 #{language.MSG_FOOTERTEXT}
+						br
+						br
+						a.icon.ion-social-github.grey-text.text-lighten-4(href="http://github.com/ahmetanilgur")  ahmetanilgur
+				div.col.l6.s12
+						h5.white-text #{language.MSG_LANGUAGE}
+						a(href="/tr").grey-text.text-lighten-4 #{language.MSG_TURKISH}
+						br
+						a(href="/en").grey-text.text-lighten-4 #{language.MSG_ENGLISH}
+						br
+						a(href="/de").grey-text.text-lighten-4 #{language.MSG_GERMAN}
+		div.footer-copyright.center
+			p Copyright (c) 2015 Ahmet Anıl GÜR  
+	script(src="../../../jquery/dist/jquery.js")
+	script(src="../../../materialize-css/bin/materialize.js")
+	script(src="../../../javascripts/clientSide.js")
+	script(src="../../../javascripts/modal.js")
+	script(src="../../../javascripts/views/nav.js")

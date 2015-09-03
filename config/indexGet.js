@@ -11,18 +11,18 @@ var Entries = db.model('entries');
 var language = require('../language.js');
 var lang;
 
-
 module.exports = function (req, res, next) {
   Entries.find({}).sort({date: -1}).exec(function (err, posts) {
     function Renderer(tempLang) {
-      lang = language.en;
       if (tempLang == "tr") {
         lang = language.tr;
       }
       else if (tempLang == "de") {
         lang = language.de;
       }
-      console.log(lang);
+      else {
+        lang = language.en;
+      }
       var pageData = {
         posts: posts,
         language: lang
