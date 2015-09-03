@@ -13,17 +13,16 @@ var lang;
 
 
 module.exports = function (req, res, next) {
-  Entries.find(function (err, posts) {
+  Entries.find({}).sort({date: -1}).exec(function (err, posts) {
     function Renderer(tempLang) {
+      lang = language.en;
       if (tempLang == "tr") {
         lang = language.tr;
       }
       else if (tempLang == "de") {
         lang = language.de;
       }
-      else {
-        lang = language.en;
-      }
+      console.log(lang);
       var pageData = {
         posts: posts,
         language: lang

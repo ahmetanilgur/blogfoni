@@ -16,14 +16,14 @@ body
 						if language
 							if !username
 								li
-									a.modal-trigger(href="#registerModal") #{language.register}
+									a.modal-trigger(href="#registerModal") #{language.MSG_REGISTER}
 								li
-									a.modal-trigger(href="#loginModal") #{language.login}
+									a.modal-trigger(href="#loginModal") #{language.MSG_LOGIN}
 							else 
 								li
-										a(href="#") #{language.hello}, #{username}
+										a(href="#") #{language.MSG_HELLO}, #{username}
 								li
-										a(href="../../logout") #{language.logout}
+										a(href="../../logout") #{language.MSG_LOGOUT}
 							if isAdmin
 								li
 										a(href="/admin") Admin Panel
@@ -34,34 +34,34 @@ body
 	if language
 		div.modal(id="registerModal")
 			div.modal-content
-				h4 #{language.register}
+				h4 #{language.MSG_REGISTER}
 				form(method="POST" action="registered")
 					div.input-field.col.s12
 						i.material-icons.prefix perm_identity
 						input#icon_prefix(name="username"  type="text" class="validate")
-						label(for="icon_prefix") #{language.username}
+						label(for="icon_prefix") #{language.MSG_USERNAME}
 					div.input-field.col.s12
 						i.material-icons.prefix https
 						input#icon_prefix(name="password"  type="password" class="validate")
-						label(for="textarea1") #{language.username}
-					button.btn.waves-effect.waves-light.blue(type="submit" name="action") #{language.register} 
+						label(for="textarea1") #{language.MSG_USERNAME}
+					button.btn.waves-effect.waves-light.blue(type="submit" name="action") #{language.MSG_REGISTER} 
 				div.modal-footer
-						a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") #{language.close}
+						a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") #{language.MSG_CLOSE}
 		//login modal
 	if language
 		div.modal(id="loginModal")
 						div.modal-content
-							h4 #{language.login}
+							h4 #{language.MSG_LOGIN}
 							form(method="POST" action="logged")
 								div.input-field.col.s12
 									i.material-icons.prefix perm_identity
 									input#icon_prefix(name="username"  type="text" class="validate")
-									label(for="icon_prefix") #{language.username}
+									label(for="icon_prefix") #{language.MSG_USERNAME}
 								div.input-field.col.s12
 									i.material-icons.prefix https
 									input#icon_prefix(name="password"  type="password" class="validate")
-									label(for="textarea1") #{language.password}
-								button.btn.waves-effect.waves-light.blue(type="submit" name="action") #{language.login}
+									label(for="textarea1") #{language.MSG_PASSWORD}
+								button.btn.waves-effect.waves-light.blue(type="submit" name="action") #{language.MSG_LOGIN}
 						div.modal-footer
-							a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") #{language.close}
+							a.modal-action.modal-close.waves-effect.waves-green.btn-flat(href="#!") #{language.MSG_CLOSE}
 include footer
