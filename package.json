@@ -25,6 +25,7 @@
     "watchify": "^3.2.3"
   },
   "devDependencies": {
-    "browserify": "^10.2.4"
+    "browserify": "^10.2.4",
+    "eslint": "^1.6.0"
   }
 }

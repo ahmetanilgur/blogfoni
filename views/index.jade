@@ -49,7 +49,7 @@ block leftContent
 										i.material-icons open_in_new	
 								div.s4.col.center
 									if username == post.username
-										a(href="/delete/#{post._id}")
+										a(href="/delete/#{post._id}" id="deletePostButton" onclick="deletePostPopup()")
 											i.material-icons delete
 							br
 		//error thrower

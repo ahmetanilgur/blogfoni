@@ -40,15 +40,6 @@ module.exports = function (req, res, next) {
           language:language.en
         })
       }
-      else if (found.password == password && (found.isBanned==false || null)) {
-        console.log("Username: " + found.username + " \nPassword: " + found.password);
-        req.session.username = found.username;
-        req.session.isBanned = found.isBanned;
-        req.session.isAdmin = found.isAdmin;
-        res.locals.isBanned=found.isBanned;
-        // This line was using a db query to render index data, instead used redirect. A fine improvement. Instead of sending two queries at once, only one query seems to be working fine.
-        res.redirect('../../');
-      }
       else if(found.isBanned==true){
         res.render('error', {
           error: {
@@ -58,6 +49,15 @@ module.exports = function (req, res, next) {
           },
           language:language.en
         })        
+      }
+      else if ((found.password == password) && (found.isBanned==false || null)) {
+        console.log("Username: " + found.username + " \nPassword: " + found.password);
+        req.session.username = found.username;
+        req.session.isBanned = found.isBanned;
+        req.session.isAdmin = found.isAdmin;
+        res.locals.isBanned=found.isBanned;
+        // This line was using a db query to render index data, instead used redirect. A fine improvement. Instead of sending two queries at once, only one query seems to be working fine.
+        res.redirect('../../');
       }
       else {
         res.render('error', {
